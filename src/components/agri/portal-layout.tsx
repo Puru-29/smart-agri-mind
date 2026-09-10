@@ -110,6 +110,7 @@ export function PortalLayout({ children }: { children: ReactNode }) {
             {location.name}, {location.district}
           </p>
           <p className="text-xs text-muted-foreground">{location.belt}</p>
+          </div>
         </div>
       </aside>
 
