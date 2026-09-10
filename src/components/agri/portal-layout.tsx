@@ -83,6 +83,16 @@ export function PortalLayout({ children }: { children: ReactNode }) {
               >
                 <item.icon className="h-4 w-4" />
                 {item.label}
+                {item.to === "/notifications" && unread > 0 ? (
+                  <span
+                    className={cn(
+                      "ml-auto rounded-full px-2 py-0.5 text-[11px] font-semibold",
+                      active ? "bg-primary-foreground/20" : "bg-clay/15 text-clay",
+                    )}
+                  >
+                    {unread}
+                  </span>
+                ) : null}
               </Link>
             );
           })}
