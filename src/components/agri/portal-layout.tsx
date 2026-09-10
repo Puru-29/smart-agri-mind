@@ -111,13 +111,18 @@ export function PortalLayout({ children }: { children: ReactNode }) {
           </p>
           <div className="ml-auto flex items-center gap-3">
             <LocationSelector />
-            <button
+            <Link
+              to="/notifications"
               className="relative rounded-full border border-border bg-card p-2"
-              aria-label="Notifications"
+              aria-label={`Notifications, ${unread} unread`}
             >
               <Bell className="h-4 w-4" />
-              <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-clay" />
-            </button>
+              {unread > 0 ? (
+                <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-clay px-1 text-[10px] font-semibold text-primary-foreground">
+                  {unread}
+                </span>
+              ) : null}
+            </Link>
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
               R
             </span>
