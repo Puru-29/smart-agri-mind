@@ -21,6 +21,8 @@ import { cn } from "@/lib/utils";
 import { LocationSelector } from "./location-selector";
 import { useFarmLocation } from "@/lib/location-context";
 import { useNotifications } from "@/lib/notification-context";
+import { useI18n } from "@/lib/i18n";
+import { LanguageSelector } from "./language-selector";
 
 const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
