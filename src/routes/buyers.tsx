@@ -3,7 +3,7 @@ import { useState } from "react";
 import { BadgeCheck, MapPin } from "lucide-react";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Bar as ScoreBar, Metric, PageHeader, Panel, Pill } from "@/components/agri/ui-bits";
-import { BUYERS, inr, kg, LOTS, roadKm, transportPerKg } from "@/lib/agri";
+import { BUYERS, inr, kg, LOTS, roadKm, transportPerKg } from "@/services";
 import { useFarmLocation } from "@/lib/location-context";
 import { cn } from "@/lib/utils";
 

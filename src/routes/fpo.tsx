@@ -5,7 +5,7 @@ import { Boxes, Handshake, Layers, Users } from "lucide-react";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Bar, Metric, PageHeader, Panel, Pill } from "@/components/agri/ui-bits";
 import { aggregateLots, getFpoPools } from "@/services";
-import { inr, kg } from "@/lib/agri";
+import { inr, kg } from "@/services";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/fpo")({

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Clock, MapPin, Phone, Truck } from "lucide-react";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Metric, PageHeader, Panel, Pill } from "@/components/agri/ui-bits";
-import { BUYERS, inr, kg, roadKm, TRACKING_EVENTS, transportPerKg } from "@/lib/agri";
+import { BUYERS, inr, kg, roadKm, TRACKING_EVENTS, transportPerKg } from "@/services";
 import { useFarmLocation } from "@/lib/location-context";
 
 export const Route = createFileRoute("/logistics")({

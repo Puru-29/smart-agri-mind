@@ -3,7 +3,7 @@ import { ArrowRight, Boxes, IndianRupee, MapPin, TrendingUp, Truck } from "lucid
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Metric, Panel, Pill, StatusTag } from "@/components/agri/ui-bits";
 import { useFarmLocation } from "@/lib/location-context";
-import { BUYERS, inr, kg, LOTS, MARKETS, roadKm, transportPerKg } from "@/lib/agri";
+import { BUYERS, inr, kg, LOTS, MARKETS, roadKm, transportPerKg } from "@/services";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({

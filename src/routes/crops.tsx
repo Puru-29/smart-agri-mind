@@ -4,7 +4,7 @@ import { CalendarDays, MapPin, Plus, Truck } from "lucide-react";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { PageHeader, Panel, Pill, StatusTag } from "@/components/agri/ui-bits";
 import { useFarmLocation } from "@/lib/location-context";
-import { inr, kg, LOTS, roadKm, transportPerKg } from "@/lib/agri";
+import { inr, kg, LOTS, roadKm, transportPerKg } from "@/services";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/crops")({

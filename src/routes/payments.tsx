@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Metric, PageHeader, Panel, Pill } from "@/components/agri/ui-bits";
-import { inr, PAYMENTS, roadKm, transportPerKg, BUYERS } from "@/lib/agri";
+import { inr, PAYMENTS, roadKm, transportPerKg, BUYERS } from "@/services";
 import { useFarmLocation } from "@/lib/location-context";
 
 export const Route = createFileRoute("/payments")({

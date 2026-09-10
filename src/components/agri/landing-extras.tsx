@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ChevronDown, Lock, MapPin, TrendingDown, TrendingUp } from "lucide-react";
 import { Panel, Pill } from "./ui-bits";
 import { cn } from "@/lib/utils";
-import { inr, LOCATIONS } from "@/lib/agri";
+import { inr, LOCATIONS } from "@/services";
 import {
   CALCULATOR_CROPS,
   calculateNetRealization,
