@@ -102,8 +102,10 @@ export function PortalLayout({ children }: { children: ReactNode }) {
           })}
         </nav>
 
-        <div className="absolute inset-x-4 bottom-6 rounded-2xl border border-border bg-card p-4">
-          <p className="eyebrow">Farm location</p>
+        <div className="absolute inset-x-4 bottom-6 space-y-3">
+          <LanguageSelector className="w-full justify-between lg:hidden" />
+          <div className="rounded-2xl border border-border bg-card p-4">
+          <p className="eyebrow">{t("Farm location")}</p>
           <p className="mt-1 text-sm font-medium">
             {location.name}, {location.district}
           </p>
