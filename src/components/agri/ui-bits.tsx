@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import type { LotStatus } from "@/lib/agri";
+import type { LotStatus } from "@/services";
 import type { ReactNode } from "react";
 
 export function Panel({ className, children }: { className?: string; children: ReactNode }) {

@@ -4,7 +4,7 @@ import { TrendingDown, TrendingUp } from "lucide-react";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Metric, PageHeader, Panel, Pill } from "@/components/agri/ui-bits";
 import { useFarmLocation } from "@/lib/location-context";
-import { buildComparison, inr, MARKETS, roadKm, transportPerKg } from "@/lib/agri";
+import { buildComparison, inr, MARKETS, roadKm, transportPerKg } from "@/services";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/markets")({

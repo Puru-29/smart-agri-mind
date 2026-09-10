@@ -14,7 +14,7 @@ import { CheckCircle2, Sparkles } from "lucide-react";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Bar as ScoreBar, PageHeader, Panel, Pill, StatusTag } from "@/components/agri/ui-bits";
 import { useFarmLocation } from "@/lib/location-context";
-import { buildComparison, inr, kg, LOTS, SIGNALS } from "@/lib/agri";
+import { buildComparison, inr, kg, LOTS, SIGNALS } from "@/services";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/decision")({

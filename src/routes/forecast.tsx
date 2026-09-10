@@ -11,7 +11,7 @@ import {
 } from "recharts";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Bar as ScoreBar, Metric, PageHeader, Panel, StatusTag } from "@/components/agri/ui-bits";
-import { DRIVERS, FORECAST, inr, kg, LOTS } from "@/lib/agri";
+import { DRIVERS, FORECAST, inr, kg, LOTS } from "@/services";
 import { useFarmLocation } from "@/lib/location-context";
 
 export const Route = createFileRoute("/forecast")({

@@ -1,5 +1,5 @@
 import { MapPin } from "lucide-react";
-import { LOCATIONS } from "@/lib/agri";
+import { LOCATIONS } from "@/services";
 import { useFarmLocation } from "@/lib/location-context";
 import {
   Select,

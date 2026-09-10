@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check } from "lucide-react";
 import { PortalLayout } from "@/components/agri/portal-layout";
 import { Metric, PageHeader, Panel, Pill } from "@/components/agri/ui-bits";
-import { inr, kg, ORDER_TIMELINE, ORDERS, roadKm, BUYERS } from "@/lib/agri";
+import { inr, kg, ORDER_TIMELINE, ORDERS, roadKm, BUYERS } from "@/services";
 import { useFarmLocation } from "@/lib/location-context";
 import { cn } from "@/lib/utils";
 

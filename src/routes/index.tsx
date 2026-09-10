@@ -15,6 +15,13 @@ import {
 import heroFarmer from "@/assets/hero-farmer.jpg";
 import mandi from "@/assets/mandi.jpg";
 import { Panel, Pill } from "@/components/agri/ui-bits";
+import {
+  FaqSection,
+  FarmerStories,
+  NetCalculator,
+  PriceTicker,
+  TrustMetrics,
+} from "@/components/agri/landing-extras";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -63,6 +70,8 @@ function Landing() {
           </Link>
         </div>
       </header>
+
+      <PriceTicker />
 
       {/* Hero */}
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-12 lg:grid-cols-2 lg:py-20">
@@ -348,6 +357,11 @@ function Landing() {
           className="h-full w-full rounded-[2rem] object-cover"
         />
       </section>
+
+      <NetCalculator />
+      <FarmerStories />
+      <TrustMetrics />
+      <FaqSection />
 
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-6 pb-24">

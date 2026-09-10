@@ -11,6 +11,8 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { LocationProvider } from "@/lib/location-context";
+import { NotificationProvider } from "@/lib/notification-context";
+import { Toaster } from "@/components/ui/sonner";
 
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
@@ -131,8 +133,11 @@ function RootComponent() {
   return (
     <QueryClientProvider client={queryClient}>
       <LocationProvider>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
-        <Outlet />
+        <NotificationProvider>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+          <Toaster />
+        </NotificationProvider>
       </LocationProvider>
     </QueryClientProvider>
   );

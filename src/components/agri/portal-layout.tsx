@@ -4,6 +4,7 @@ import {
   Bell,
   Boxes,
   Brain,
+  Building2,
   ChevronLeft,
   LayoutDashboard,
   LineChart,
@@ -12,12 +13,14 @@ import {
   Sprout,
   Store,
   Truck,
+  User,
   Users,
   Wallet,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LocationSelector } from "./location-selector";
 import { useFarmLocation } from "@/lib/location-context";
+import { useNotifications } from "@/lib/notification-context";
 
 const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -29,12 +32,16 @@ const NAV = [
   { to: "/orders", label: "Orders", icon: Package },
   { to: "/logistics", label: "Logistics", icon: Truck },
   { to: "/payments", label: "Settlements", icon: Wallet },
+  { to: "/fpo", label: "FPO", icon: Building2 },
+  { to: "/notifications", label: "Notifications", icon: Bell },
+  { to: "/profile", label: "Profile", icon: User },
 ] as const;
 
 export function PortalLayout({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const { location } = useFarmLocation();
+  const { unread } = useNotifications();
 
   return (
     <div className="min-h-screen bg-background">
@@ -77,6 +84,16 @@ export function PortalLayout({ children }: { children: ReactNode }) {
               >
                 <item.icon className="h-4 w-4" />
                 {item.label}
+                {item.to === "/notifications" && unread > 0 ? (
+                  <span
+                    className={cn(
+                      "ml-auto rounded-full px-2 py-0.5 text-[11px] font-semibold",
+                      active ? "bg-primary-foreground/20" : "bg-clay/15 text-clay",
+                    )}
+                  >
+                    {unread}
+                  </span>
+                ) : null}
               </Link>
             );
           })}
@@ -105,13 +122,18 @@ export function PortalLayout({ children }: { children: ReactNode }) {
           </p>
           <div className="ml-auto flex items-center gap-3">
             <LocationSelector />
-            <button
+            <Link
+              to="/notifications"
               className="relative rounded-full border border-border bg-card p-2"
-              aria-label="Notifications"
+              aria-label={`Notifications, ${unread} unread`}
             >
               <Bell className="h-4 w-4" />
-              <span className="absolute right-1.5 top-1.5 h-2 w-2 rounded-full bg-clay" />
-            </button>
+              {unread > 0 ? (
+                <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-full bg-clay px-1 text-[10px] font-semibold text-primary-foreground">
+                  {unread}
+                </span>
+              ) : null}
+            </Link>
             <span className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground">
               R
             </span>

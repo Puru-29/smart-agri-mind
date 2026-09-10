@@ -16,10 +16,13 @@ import { Route as CropsRouteImport } from './routes/crops'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DecisionRouteImport } from './routes/decision'
 import { Route as ForecastRouteImport } from './routes/forecast'
+import { Route as FpoRouteImport } from './routes/fpo'
 import { Route as LogisticsRouteImport } from './routes/logistics'
 import { Route as MarketsRouteImport } from './routes/markets'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PaymentsRouteImport } from './routes/payments'
+import { Route as ProfileRouteImport } from './routes/profile'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -56,6 +59,11 @@ const ForecastRoute = ForecastRouteImport.update({
   path: '/forecast',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FpoRoute = FpoRouteImport.update({
+  id: '/fpo',
+  path: '/fpo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LogisticsRoute = LogisticsRouteImport.update({
   id: '/logistics',
   path: '/logistics',
@@ -64,6 +72,11 @@ const LogisticsRoute = LogisticsRouteImport.update({
 const MarketsRoute = MarketsRouteImport.update({
   id: '/markets',
   path: '/markets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
   getParentRoute: () => rootRouteImport,
 } as any)
 const OrdersRoute = OrdersRouteImport.update({
@@ -76,6 +89,11 @@ const PaymentsRoute = PaymentsRouteImport.update({
   path: '/payments',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -85,10 +103,13 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/decision': typeof DecisionRoute
   '/forecast': typeof ForecastRoute
+  '/fpo': typeof FpoRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -98,10 +119,13 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/decision': typeof DecisionRoute
   '/forecast': typeof ForecastRoute
+  '/fpo': typeof FpoRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -112,10 +136,13 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/decision': typeof DecisionRoute
   '/forecast': typeof ForecastRoute
+  '/fpo': typeof FpoRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
+  '/profile': typeof ProfileRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -127,10 +154,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/decision'
     | '/forecast'
+    | '/fpo'
     | '/logistics'
     | '/markets'
+    | '/notifications'
     | '/orders'
     | '/payments'
+    | '/profile'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -140,10 +170,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/decision'
     | '/forecast'
+    | '/fpo'
     | '/logistics'
     | '/markets'
+    | '/notifications'
     | '/orders'
     | '/payments'
+    | '/profile'
   id:
     | '__root__'
     | '/'
@@ -153,10 +186,13 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/decision'
     | '/forecast'
+    | '/fpo'
     | '/logistics'
     | '/markets'
+    | '/notifications'
     | '/orders'
     | '/payments'
+    | '/profile'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -167,10 +203,13 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   DecisionRoute: typeof DecisionRoute
   ForecastRoute: typeof ForecastRoute
+  FpoRoute: typeof FpoRoute
   LogisticsRoute: typeof LogisticsRoute
   MarketsRoute: typeof MarketsRoute
+  NotificationsRoute: typeof NotificationsRoute
   OrdersRoute: typeof OrdersRoute
   PaymentsRoute: typeof PaymentsRoute
+  ProfileRoute: typeof ProfileRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -224,6 +263,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForecastRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fpo': {
+      id: '/fpo'
+      path: '/fpo'
+      fullPath: '/fpo'
+      preLoaderRoute: typeof FpoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/logistics': {
       id: '/logistics'
       path: '/logistics'
@@ -236,6 +282,13 @@ declare module '@tanstack/react-router' {
       path: '/markets'
       fullPath: '/markets'
       preLoaderRoute: typeof MarketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/orders': {
@@ -252,6 +305,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PaymentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -263,10 +323,13 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   DecisionRoute: DecisionRoute,
   ForecastRoute: ForecastRoute,
+  FpoRoute: FpoRoute,
   LogisticsRoute: LogisticsRoute,
   MarketsRoute: MarketsRoute,
+  NotificationsRoute: NotificationsRoute,
   OrdersRoute: OrdersRoute,
   PaymentsRoute: PaymentsRoute,
+  ProfileRoute: ProfileRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
