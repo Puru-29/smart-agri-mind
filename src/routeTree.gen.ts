@@ -10,33 +10,167 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BuyersRouteImport } from './routes/buyers'
+import { Route as CropsRouteImport } from './routes/crops'
+import { Route as DashboardRouteImport } from './routes/dashboard'
+import { Route as DecisionRouteImport } from './routes/decision'
+import { Route as ForecastRouteImport } from './routes/forecast'
+import { Route as LogisticsRouteImport } from './routes/logistics'
+import { Route as MarketsRouteImport } from './routes/markets'
+import { Route as OrdersRouteImport } from './routes/orders'
+import { Route as PaymentsRouteImport } from './routes/payments'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BuyersRoute = BuyersRouteImport.update({
+  id: '/buyers',
+  path: '/buyers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CropsRoute = CropsRouteImport.update({
+  id: '/crops',
+  path: '/crops',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DecisionRoute = DecisionRouteImport.update({
+  id: '/decision',
+  path: '/decision',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ForecastRoute = ForecastRouteImport.update({
+  id: '/forecast',
+  path: '/forecast',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LogisticsRoute = LogisticsRouteImport.update({
+  id: '/logistics',
+  path: '/logistics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketsRoute = MarketsRouteImport.update({
+  id: '/markets',
+  path: '/markets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OrdersRoute = OrdersRouteImport.update({
+  id: '/orders',
+  path: '/orders',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PaymentsRoute = PaymentsRouteImport.update({
+  id: '/payments',
+  path: '/payments',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/buyers': typeof BuyersRoute
+  '/crops': typeof CropsRoute
+  '/dashboard': typeof DashboardRoute
+  '/decision': typeof DecisionRoute
+  '/forecast': typeof ForecastRoute
+  '/logistics': typeof LogisticsRoute
+  '/markets': typeof MarketsRoute
+  '/orders': typeof OrdersRoute
+  '/payments': typeof PaymentsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/buyers': typeof BuyersRoute
+  '/crops': typeof CropsRoute
+  '/dashboard': typeof DashboardRoute
+  '/decision': typeof DecisionRoute
+  '/forecast': typeof ForecastRoute
+  '/logistics': typeof LogisticsRoute
+  '/markets': typeof MarketsRoute
+  '/orders': typeof OrdersRoute
+  '/payments': typeof PaymentsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/buyers': typeof BuyersRoute
+  '/crops': typeof CropsRoute
+  '/dashboard': typeof DashboardRoute
+  '/decision': typeof DecisionRoute
+  '/forecast': typeof ForecastRoute
+  '/logistics': typeof LogisticsRoute
+  '/markets': typeof MarketsRoute
+  '/orders': typeof OrdersRoute
+  '/payments': typeof PaymentsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/buyers'
+    | '/crops'
+    | '/dashboard'
+    | '/decision'
+    | '/forecast'
+    | '/logistics'
+    | '/markets'
+    | '/orders'
+    | '/payments'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/buyers'
+    | '/crops'
+    | '/dashboard'
+    | '/decision'
+    | '/forecast'
+    | '/logistics'
+    | '/markets'
+    | '/orders'
+    | '/payments'
+  id:
+    | '__root__'
+    | '/'
+    | '/auth'
+    | '/buyers'
+    | '/crops'
+    | '/dashboard'
+    | '/decision'
+    | '/forecast'
+    | '/logistics'
+    | '/markets'
+    | '/orders'
+    | '/payments'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthRoute: typeof AuthRoute
+  BuyersRoute: typeof BuyersRoute
+  CropsRoute: typeof CropsRoute
+  DashboardRoute: typeof DashboardRoute
+  DecisionRoute: typeof DecisionRoute
+  ForecastRoute: typeof ForecastRoute
+  LogisticsRoute: typeof LogisticsRoute
+  MarketsRoute: typeof MarketsRoute
+  OrdersRoute: typeof OrdersRoute
+  PaymentsRoute: typeof PaymentsRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +182,91 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/buyers': {
+      id: '/buyers'
+      path: '/buyers'
+      fullPath: '/buyers'
+      preLoaderRoute: typeof BuyersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/crops': {
+      id: '/crops'
+      path: '/crops'
+      fullPath: '/crops'
+      preLoaderRoute: typeof CropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/decision': {
+      id: '/decision'
+      path: '/decision'
+      fullPath: '/decision'
+      preLoaderRoute: typeof DecisionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/forecast': {
+      id: '/forecast'
+      path: '/forecast'
+      fullPath: '/forecast'
+      preLoaderRoute: typeof ForecastRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/logistics': {
+      id: '/logistics'
+      path: '/logistics'
+      fullPath: '/logistics'
+      preLoaderRoute: typeof LogisticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/markets': {
+      id: '/markets'
+      path: '/markets'
+      fullPath: '/markets'
+      preLoaderRoute: typeof MarketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/orders': {
+      id: '/orders'
+      path: '/orders'
+      fullPath: '/orders'
+      preLoaderRoute: typeof OrdersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/payments': {
+      id: '/payments'
+      path: '/payments'
+      fullPath: '/payments'
+      preLoaderRoute: typeof PaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthRoute: AuthRoute,
+  BuyersRoute: BuyersRoute,
+  CropsRoute: CropsRoute,
+  DashboardRoute: DashboardRoute,
+  DecisionRoute: DecisionRoute,
+  ForecastRoute: ForecastRoute,
+  LogisticsRoute: LogisticsRoute,
+  MarketsRoute: MarketsRoute,
+  OrdersRoute: OrdersRoute,
+  PaymentsRoute: PaymentsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
