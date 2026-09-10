@@ -44,6 +44,7 @@ export function PortalLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const { location } = useFarmLocation();
   const { unread } = useNotifications();
+  const { t } = useI18n();
 
   return (
     <div className="min-h-screen bg-background">
