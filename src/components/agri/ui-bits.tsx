@@ -60,10 +60,11 @@ export function Metric({
   hint?: ReactNode;
   icon?: ReactNode;
 }) {
+  const { t } = useI18n();
   return (
     <div className="rounded-3xl border border-border bg-card p-5">
       <div className="flex items-start justify-between gap-3">
-        <p className="text-sm text-muted-foreground">{label}</p>
+        <p className="text-sm text-muted-foreground">{t(label)}</p>
         {icon ? <span className="text-primary/70">{icon}</span> : null}
       </div>
       <p className="mt-3 font-serif text-3xl text-foreground">{value}</p>
