@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 import type { LotStatus } from "@/services";
 import type { ReactNode } from "react";
 
@@ -39,10 +40,11 @@ export function Pill({
 }
 
 export function StatusTag({ status }: { status: LotStatus }) {
+  const { t } = useI18n();
   const tone = status === "SELL NOW" ? "solid" : status === "HOLD" ? "amber" : "slate";
   return (
     <Pill tone={tone} className="font-semibold tracking-wide">
-      {status}
+      {t(status)}
     </Pill>
   );
 }
@@ -58,10 +60,11 @@ export function Metric({
   hint?: ReactNode;
   icon?: ReactNode;
 }) {
+  const { t } = useI18n();
   return (
     <div className="rounded-3xl border border-border bg-card p-5">
       <div className="flex items-start justify-between gap-3">
-        <p className="text-sm text-muted-foreground">{label}</p>
+        <p className="text-sm text-muted-foreground">{t(label)}</p>
         {icon ? <span className="text-primary/70">{icon}</span> : null}
       </div>
       <p className="mt-3 font-serif text-3xl text-foreground">{value}</p>
@@ -81,13 +84,14 @@ export function PageHeader({
   description?: string;
   action?: ReactNode;
 }) {
+  const { t } = useI18n();
   return (
     <div className="flex flex-wrap items-end justify-between gap-4">
       <div>
-        {eyebrow ? <p className="eyebrow mb-2">{eyebrow}</p> : null}
-        <h1 className="font-serif text-3xl text-foreground md:text-4xl">{title}</h1>
+        {eyebrow ? <p className="eyebrow mb-2">{t(eyebrow)}</p> : null}
+        <h1 className="font-serif text-3xl text-foreground md:text-4xl">{t(title)}</h1>
         {description ? (
-          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{description}</p>
+          <p className="mt-2 max-w-2xl text-sm text-muted-foreground">{t(description)}</p>
         ) : null}
       </div>
       {action}

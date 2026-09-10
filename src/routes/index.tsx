@@ -22,6 +22,8 @@ import {
   PriceTicker,
   TrustMetrics,
 } from "@/components/agri/landing-extras";
+import { LanguageSelector } from "@/components/agri/language-selector";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,6 +45,7 @@ export const Route = createFileRoute("/")({
 });
 
 function Landing() {
+  const { t: tr } = useI18n();
   return (
     <div className="min-h-screen bg-background">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
@@ -53,20 +56,21 @@ function Landing() {
           <span className="font-serif text-xl">AgriSense</span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <a href="#gap">The gap</a>
-          <a href="#engine">Decision engine</a>
-          <a href="#intelligence">Market intelligence</a>
-          <a href="#trust">Buyer trust</a>
+          <a href="#gap">{tr("The gap")}</a>
+          <a href="#engine">{tr("Decision engine")}</a>
+          <a href="#intelligence">{tr("Market intelligence")}</a>
+          <a href="#trust">{tr("Buyer trust")}</a>
         </nav>
         <div className="flex items-center gap-3">
+          <LanguageSelector className="hidden sm:flex" />
           <Link to="/auth" className="hidden text-sm text-muted-foreground sm:block">
-            Sign in
+            {tr("Sign in")}
           </Link>
           <Link
             to="/dashboard"
             className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground"
           >
-            Open portal <ArrowRight className="h-4 w-4" />
+            {tr("Open portal")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </header>
@@ -77,31 +81,30 @@ function Landing() {
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-12 lg:grid-cols-2 lg:py-20">
         <div>
           <Pill tone="green">
-            <MapPin className="h-3.5 w-3.5" /> Built for Indian mandis
+            <MapPin className="h-3.5 w-3.5" /> {tr("Built for Indian mandis")}
           </Pill>
           <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-foreground md:text-6xl">
-            Know the price.
+            {tr("Know the price.")}
             <br />
-            Know the buyer.
+            {tr("Know the buyer.")}
             <br />
-            <span className="text-primary italic">Know when to sell.</span>
+            <span className="text-primary italic">{tr("Know when to sell.")}</span>
           </h1>
           <p className="mt-6 max-w-md text-base text-muted-foreground">
-            AgriSense reads mandi arrivals, buyer demand, transport cost and payment reliability,
-            then tells you exactly what to do with each crop lot — sell now, hold, or split.
+            {tr("AgriSense reads mandi arrivals, buyer demand, transport cost and payment reliability, then tells you exactly what to do with each crop lot — sell now, hold, or split.")}
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
             <Link
               to="/dashboard"
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-medium text-primary-foreground"
             >
-              See a live decision <ArrowRight className="h-4 w-4" />
+              {tr("See a live decision")} <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               to="/markets"
               className="rounded-full border border-border px-6 py-3 text-sm font-medium"
             >
-              Browse markets
+              {tr("Browse markets")}
             </Link>
           </div>
           <div className="mt-10 flex flex-wrap gap-8">
@@ -112,7 +115,7 @@ function Landing() {
             ].map(([v, l]) => (
               <div key={l}>
                 <p className="font-serif text-2xl text-foreground">{v}</p>
-                <p className="text-xs text-muted-foreground">{l}</p>
+                <p className="text-xs text-muted-foreground">{tr(l!)}</p>
               </div>
             ))}
           </div>
@@ -127,8 +130,8 @@ function Landing() {
           />
           <div className="absolute -bottom-6 left-6 right-16 rounded-3xl border border-border bg-card p-5 shadow-sm">
             <div className="flex items-center justify-between">
-              <p className="eyebrow">Today's decision</p>
-              <Pill tone="solid">SELL NOW</Pill>
+              <p className="eyebrow">{tr("Today's decision")}</p>
+              <Pill tone="solid">{tr("SELL NOW")}</Pill>
             </div>
             <p className="mt-3 font-serif text-2xl">₹30/kg · Buyer A</p>
             <p className="text-xs text-muted-foreground">
@@ -140,9 +143,9 @@ function Landing() {
 
       {/* The Gap */}
       <section id="gap" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="eyebrow">The gap</p>
+        <p className="eyebrow">{tr("The gap")}</p>
         <h2 className="mt-3 max-w-2xl font-serif text-4xl">
-          Market information alone isn't enough
+          {tr("Market information alone isn't enough")}
         </h2>
         <p className="mt-4 max-w-2xl text-muted-foreground">
           Farmers already receive prices on SMS. What they lack is the arithmetic that turns a
@@ -191,13 +194,13 @@ function Landing() {
         <div className="mx-auto max-w-6xl px-6 py-24">
           <div className="flex flex-wrap items-end justify-between gap-6">
             <div>
-              <p className="eyebrow">AI decision engine</p>
+              <p className="eyebrow">{tr("AI decision engine")}</p>
               <h2 className="mt-3 max-w-xl font-serif text-4xl">
-                Six weighted signals, one recommendation
+                {tr("Six weighted signals, one recommendation")}
               </h2>
             </div>
             <Link to="/decision" className="text-sm underline underline-offset-4">
-              See a full breakdown
+              {tr("See a full breakdown")}
             </Link>
           </div>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
@@ -257,8 +260,8 @@ function Landing() {
 
       {/* Market intelligence */}
       <section id="intelligence" className="mx-auto max-w-6xl px-6 py-24">
-        <p className="eyebrow">Market intelligence</p>
-        <h2 className="mt-3 max-w-2xl font-serif text-4xl">Everything priced from your farm gate</h2>
+        <p className="eyebrow">{tr("Market intelligence")}</p>
+        <h2 className="mt-3 max-w-2xl font-serif text-4xl">{tr("Everything priced from your farm gate")}</h2>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
           {[
             {
@@ -304,8 +307,8 @@ function Landing() {
       {/* How it works */}
       <section className="border-y border-border bg-secondary/60">
         <div className="mx-auto max-w-6xl px-6 py-24">
-          <p className="eyebrow">How it works</p>
-          <h2 className="mt-3 font-serif text-4xl">Three steps to a better price</h2>
+          <p className="eyebrow">{tr("How it works")}</p>
+          <h2 className="mt-3 font-serif text-4xl">{tr("Three steps to a better price")}</h2>
           <div className="mt-10 grid gap-6 md:grid-cols-3">
             {[
               ["01", "Register your lot", "Crop, grade, quantity, harvest date and farm location."],
@@ -325,8 +328,8 @@ function Landing() {
       {/* Trust & FPO */}
       <section id="trust" className="mx-auto grid max-w-6xl gap-10 px-6 py-24 lg:grid-cols-2">
         <div>
-          <p className="eyebrow">Buyer trust</p>
-          <h2 className="mt-3 font-serif text-4xl">Reliability is a number, not a rumour</h2>
+          <p className="eyebrow">{tr("Buyer trust")}</p>
+          <h2 className="mt-3 font-serif text-4xl">{tr("Reliability is a number, not a rumour")}</h2>
           <p className="mt-4 text-muted-foreground">
             Every buyer carries a score built from on-time payments, honoured offers, rejection
             rates and dispute history. Small lots get aggregated through your FPO so you reach the
@@ -367,7 +370,7 @@ function Landing() {
       <section className="mx-auto max-w-6xl px-6 pb-24">
         <div className="rounded-[2.5rem] bg-primary px-8 py-16 text-center text-primary-foreground">
           <h2 className="mx-auto max-w-2xl font-serif text-4xl md:text-5xl">
-            Your next harvest deserves a better decision
+            {tr("Your next harvest deserves a better decision")}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-primary-foreground/75">
             Start with a demo farm in Dindori, Nashik and see how the engine prices every buyer and
@@ -377,7 +380,7 @@ function Landing() {
             to="/auth"
             className="mt-8 inline-flex items-center gap-2 rounded-full bg-primary-foreground px-7 py-3 text-sm font-medium text-primary"
           >
-            Enter the portal <ArrowRight className="h-4 w-4" />
+            {tr("Enter the portal")} <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
       </section>
@@ -385,7 +388,7 @@ function Landing() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-8 text-sm text-muted-foreground">
           <span className="font-serif text-base text-foreground">AgriSense</span>
-          <p>Market intelligence for farmers, FPOs and buyers.</p>
+          <p>{tr("Market intelligence for farmers, FPOs and buyers.")}</p>
           <p>© 2026 AgriSense</p>
         </div>
       </footer>

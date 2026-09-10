@@ -21,6 +21,8 @@ import { cn } from "@/lib/utils";
 import { LocationSelector } from "./location-selector";
 import { useFarmLocation } from "@/lib/location-context";
 import { useNotifications } from "@/lib/notification-context";
+import { useI18n } from "@/lib/i18n";
+import { LanguageSelector } from "./language-selector";
 
 const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -42,6 +44,7 @@ export function PortalLayout({ children }: { children: ReactNode }) {
   const [open, setOpen] = useState(false);
   const { location } = useFarmLocation();
   const { unread } = useNotifications();
+  const { t } = useI18n();
 
   return (
     <div className="min-h-screen bg-background">
@@ -83,7 +86,7 @@ export function PortalLayout({ children }: { children: ReactNode }) {
                 )}
               >
                 <item.icon className="h-4 w-4" />
-                {item.label}
+                {t(item.label)}
                 {item.to === "/notifications" && unread > 0 ? (
                   <span
                     className={cn(
@@ -99,12 +102,15 @@ export function PortalLayout({ children }: { children: ReactNode }) {
           })}
         </nav>
 
-        <div className="absolute inset-x-4 bottom-6 rounded-2xl border border-border bg-card p-4">
-          <p className="eyebrow">Farm location</p>
+        <div className="absolute inset-x-4 bottom-6 space-y-3">
+          <LanguageSelector className="w-full justify-between lg:hidden" />
+          <div className="rounded-2xl border border-border bg-card p-4">
+          <p className="eyebrow">{t("Farm location")}</p>
           <p className="mt-1 text-sm font-medium">
             {location.name}, {location.district}
           </p>
           <p className="text-xs text-muted-foreground">{location.belt}</p>
+          </div>
         </div>
       </aside>
 
@@ -118,9 +124,10 @@ export function PortalLayout({ children }: { children: ReactNode }) {
             <Menu className="h-5 w-5" />
           </button>
           <p className="hidden text-sm text-muted-foreground md:block">
-            Farmer portal · Ramesh Patil
+            {t("Farmer portal")} · Ramesh Patil
           </p>
           <div className="ml-auto flex items-center gap-3">
+            <LanguageSelector className="hidden sm:flex" />
             <LocationSelector />
             <Link
               to="/notifications"

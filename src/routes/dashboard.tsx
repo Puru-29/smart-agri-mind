@@ -4,6 +4,7 @@ import { PortalLayout } from "@/components/agri/portal-layout";
 import { Metric, Panel, Pill, StatusTag } from "@/components/agri/ui-bits";
 import { useFarmLocation } from "@/lib/location-context";
 import { BUYERS, inr, kg, LOTS, MARKETS, roadKm, transportPerKg } from "@/services";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
@@ -22,6 +23,7 @@ export const Route = createFileRoute("/dashboard")({
 
 function Dashboard() {
   const { location } = useFarmLocation();
+  const { t } = useI18n();
   const hero = LOTS[0]!;
   const bestBuyer = BUYERS[0]!;
   const buyerKm = roadKm(location, bestBuyer);
@@ -34,7 +36,7 @@ function Dashboard() {
     <PortalLayout>
       <div>
         <p className="eyebrow">{new Date().toDateString()}</p>
-        <h1 className="mt-2 font-serif text-4xl">Namaste, Ramesh 🙏</h1>
+        <h1 className="mt-2 font-serif text-4xl">{t("Namaste, Ramesh 🙏")}</h1>
         <p className="mt-2 flex items-center gap-1.5 text-sm text-muted-foreground">
           <MapPin className="h-4 w-4" /> {location.name}, {location.district}, {location.state} ·{" "}
           {location.belt}
@@ -46,14 +48,14 @@ function Dashboard() {
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <Pill className="bg-primary-foreground/15 text-primary-foreground">
-              AI market decision
+              {t("AI market decision")}
             </Pill>
             <h2 className="mt-4 font-serif text-3xl">
-              Sell {kg(hero.quantity)} of {hero.crop} today at {inr(bestBuyer.offer)}/kg
+              {t("Sell now")} · {kg(hero.quantity)} {t(hero.crop)} at {inr(bestBuyer.offer)}/kg
             </h2>
             <p className="mt-2 max-w-xl text-sm text-primary-foreground/75">
               {bestBuyer.name} is {buyerKm} km from {location.name}. After {inr(freight)}/kg
-              transport your net realization is {inr(net)} — {hero.confidence}% confidence.
+              transport your net realization is {inr(net)} — {hero.confidence}% {t("confidence")}.
             </p>
           </div>
           <StatusTag status={hero.status} />
@@ -65,7 +67,7 @@ function Dashboard() {
             ["Net realization", inr(net)],
           ].map(([l, v]) => (
             <div key={l} className="rounded-2xl bg-primary-foreground/10 p-4">
-              <p className="text-xs text-primary-foreground/70">{l}</p>
+              <p className="text-xs text-primary-foreground/70">{t(l!)}</p>
               <p className="mt-1 font-serif text-2xl">{v}</p>
             </div>
           ))}
@@ -74,13 +76,13 @@ function Dashboard() {
           to="/decision"
           className="mt-6 inline-flex items-center gap-2 rounded-full bg-primary-foreground px-5 py-2.5 text-sm font-medium text-primary"
         >
-          View full breakdown <ArrowRight className="h-4 w-4" />
+          {t("View full breakdown")} <ArrowRight className="h-4 w-4" />
         </Link>
       </Panel>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        <Metric label="Active lots" value={LOTS.length} hint={kg(totalKg) + " registered"} icon={<Boxes className="h-4 w-4" />} />
-        <Metric label="Portfolio value" value={inr(totalValue)} hint="At current offers" icon={<IndianRupee className="h-4 w-4" />} />
+        <Metric label="Active lots" value={LOTS.length} hint={kg(totalKg)} icon={<Boxes className="h-4 w-4" />} />
+        <Metric label="Portfolio value" value={inr(totalValue)} hint={t("At current offers")} icon={<IndianRupee className="h-4 w-4" />} />
         <Metric label="Best mandi gain" value="+6.1%" hint="Mumbai Vashi APMC" icon={<TrendingUp className="h-4 w-4" />} />
         <Metric label="Avg transport" value={inr(freight) + "/kg"} hint={`${buyerKm} km to nearest buyer`} icon={<Truck className="h-4 w-4" />} />
       </div>
@@ -88,9 +90,9 @@ function Dashboard() {
       {/* Crop lots */}
       <section className="space-y-4">
         <div className="flex items-center justify-between">
-          <h2 className="font-serif text-2xl">Your crop lots</h2>
+          <h2 className="font-serif text-2xl">{t("Your crop lots")}</h2>
           <Link to="/crops" className="text-sm underline underline-offset-4">
-            View all
+            {t("View all")}
           </Link>
         </div>
         <div className="grid gap-4 md:grid-cols-2">
@@ -102,7 +104,7 @@ function Dashboard() {
                   <div className="flex items-center gap-3">
                     <span className="text-2xl">{lot.emoji}</span>
                     <div>
-                      <p className="font-serif text-xl">{lot.crop}</p>
+                      <p className="font-serif text-xl">{t(lot.crop)}</p>
                       <p className="text-xs text-muted-foreground">
                         {lot.id} · {lot.grade}
                       </p>
@@ -112,15 +114,15 @@ function Dashboard() {
                 </div>
                 <div className="mt-4 grid grid-cols-3 gap-3 text-sm">
                   <div>
-                    <p className="text-xs text-muted-foreground">Quantity</p>
+                    <p className="text-xs text-muted-foreground">{t("Quantity")}</p>
                     <p>{kg(lot.quantity)}</p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground">Price</p>
+                    <p className="text-xs text-muted-foreground">{t("Price")}</p>
                     <p>{inr(lot.price)}/kg</p>
                   </div>
                   <div>
-                    <p className="text-xs text-muted-foreground">Distance</p>
+                    <p className="text-xs text-muted-foreground">{t("Distance")}</p>
                     <p>{km} km</p>
                   </div>
                 </div>
@@ -133,7 +135,7 @@ function Dashboard() {
       {/* Market opportunities */}
       <section className="grid gap-6 lg:grid-cols-2">
         <div className="space-y-4">
-          <h2 className="font-serif text-2xl">Market opportunities</h2>
+          <h2 className="font-serif text-2xl">{t("Market opportunities")}</h2>
           {MARKETS.slice(0, 4).map((m) => {
             const km = roadKm(location, m);
             const freightKg = transportPerKg(km);
@@ -157,7 +159,7 @@ function Dashboard() {
           })}
         </div>
         <div className="space-y-4">
-          <h2 className="font-serif text-2xl">Buyer opportunities</h2>
+          <h2 className="font-serif text-2xl">{t("Buyer opportunities")}</h2>
           {BUYERS.map((b) => {
             const km = roadKm(location, b);
             return (
