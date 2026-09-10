@@ -86,7 +86,7 @@ export function PortalLayout({ children }: { children: ReactNode }) {
                 )}
               >
                 <item.icon className="h-4 w-4" />
-                {item.label}
+                {t(item.label)}
                 {item.to === "/notifications" && unread > 0 ? (
                   <span
                     className={cn(
