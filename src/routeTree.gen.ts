@@ -18,6 +18,7 @@ import { Route as DecisionRouteImport } from './routes/decision'
 import { Route as ForecastRouteImport } from './routes/forecast'
 import { Route as LogisticsRouteImport } from './routes/logistics'
 import { Route as MarketsRouteImport } from './routes/markets'
+import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as ProfileRouteImport } from './routes/profile'
@@ -67,6 +68,11 @@ const MarketsRoute = MarketsRouteImport.update({
   path: '/markets',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NotificationsRoute = NotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OrdersRoute = OrdersRouteImport.update({
   id: '/orders',
   path: '/orders',
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/forecast': typeof ForecastRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
@@ -107,6 +114,7 @@ export interface FileRoutesByTo {
   '/forecast': typeof ForecastRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
@@ -122,6 +130,7 @@ export interface FileRoutesById {
   '/forecast': typeof ForecastRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
+  '/notifications': typeof NotificationsRoute
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
@@ -138,6 +147,7 @@ export interface FileRouteTypes {
     | '/forecast'
     | '/logistics'
     | '/markets'
+    | '/notifications'
     | '/orders'
     | '/payments'
     | '/profile'
@@ -152,6 +162,7 @@ export interface FileRouteTypes {
     | '/forecast'
     | '/logistics'
     | '/markets'
+    | '/notifications'
     | '/orders'
     | '/payments'
     | '/profile'
@@ -166,6 +177,7 @@ export interface FileRouteTypes {
     | '/forecast'
     | '/logistics'
     | '/markets'
+    | '/notifications'
     | '/orders'
     | '/payments'
     | '/profile'
@@ -181,6 +193,7 @@ export interface RootRouteChildren {
   ForecastRoute: typeof ForecastRoute
   LogisticsRoute: typeof LogisticsRoute
   MarketsRoute: typeof MarketsRoute
+  NotificationsRoute: typeof NotificationsRoute
   OrdersRoute: typeof OrdersRoute
   PaymentsRoute: typeof PaymentsRoute
   ProfileRoute: typeof ProfileRoute
@@ -251,6 +264,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof MarketsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/notifications': {
+      id: '/notifications'
+      path: '/notifications'
+      fullPath: '/notifications'
+      preLoaderRoute: typeof NotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/orders': {
       id: '/orders'
       path: '/orders'
@@ -285,6 +305,7 @@ const rootRouteChildren: RootRouteChildren = {
   ForecastRoute: ForecastRoute,
   LogisticsRoute: LogisticsRoute,
   MarketsRoute: MarketsRoute,
+  NotificationsRoute: NotificationsRoute,
   OrdersRoute: OrdersRoute,
   PaymentsRoute: PaymentsRoute,
   ProfileRoute: ProfileRoute,
