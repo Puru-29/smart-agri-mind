@@ -349,6 +349,11 @@ function Landing() {
         />
       </section>
 
+      <NetCalculator />
+      <FarmerStories />
+      <TrustMetrics />
+      <FaqSection />
+
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-6 pb-24">
         <div className="rounded-[2.5rem] bg-primary px-8 py-16 text-center text-primary-foreground">
