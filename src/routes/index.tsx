@@ -15,6 +15,13 @@ import {
 import heroFarmer from "@/assets/hero-farmer.jpg";
 import mandi from "@/assets/mandi.jpg";
 import { Panel, Pill } from "@/components/agri/ui-bits";
+import {
+  FaqSection,
+  FarmerStories,
+  NetCalculator,
+  PriceTicker,
+  TrustMetrics,
+} from "@/components/agri/landing-extras";
 
 export const Route = createFileRoute("/")({
   head: () => ({
