@@ -6,6 +6,7 @@ import { PageHeader, Panel, Pill, StatusTag } from "@/components/agri/ui-bits";
 import { useFarmLocation } from "@/lib/location-context";
 import { inr, kg, LOTS, roadKm, transportPerKg } from "@/services";
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/crops")({
   head: () => ({
@@ -23,6 +24,7 @@ const FILTERS = ["All lots", "SELL NOW", "HOLD", "SPLIT"] as const;
 
 function Crops() {
   const { location } = useFarmLocation();
+  const { t } = useI18n();
   const [filter, setFilter] = useState<(typeof FILTERS)[number]>("All lots");
   const lots = filter === "All lots" ? LOTS : LOTS.filter((l) => l.status === filter);
 
@@ -34,7 +36,7 @@ function Crops() {
         description={`All lots priced from ${location.name}, ${location.district}. Distance and freight update when you change your farm location.`}
         action={
           <button className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm text-primary-foreground">
-            <Plus className="h-4 w-4" /> Register lot
+            <Plus className="h-4 w-4" /> {t("Register lot")}
           </button>
         }
       />
@@ -51,7 +53,7 @@ function Crops() {
                 : "border-border bg-card text-muted-foreground",
             )}
           >
-            {f}
+            {t(f)}
           </button>
         ))}
       </div>
@@ -69,7 +71,7 @@ function Crops() {
                     {lot.emoji}
                   </span>
                   <div>
-                    <p className="font-serif text-2xl">{lot.crop}</p>
+                    <p className="font-serif text-2xl">{t(lot.crop)}</p>
                     <p className="text-xs text-muted-foreground">
                       {lot.id} · {lot.grade} · {lot.stateLabel}
                     </p>
@@ -86,7 +88,7 @@ function Crops() {
                   ["Net", `${inr(net)}/kg`],
                 ].map(([l, v]) => (
                   <div key={l}>
-                    <p className="text-xs text-muted-foreground">{l}</p>
+                    <p className="text-xs text-muted-foreground">{t(l!)}</p>
                     <p className="mt-0.5">{v}</p>
                   </div>
                 ))}
@@ -97,10 +99,10 @@ function Crops() {
                   <MapPin className="h-3.5 w-3.5" /> {lot.place.name} · {km} km
                 </Pill>
                 <Pill>
-                  <CalendarDays className="h-3.5 w-3.5" /> Harvest {lot.harvest}
+                  <CalendarDays className="h-3.5 w-3.5" /> {t("Harvest")} {lot.harvest}
                 </Pill>
                 <Pill>
-                  <Truck className="h-3.5 w-3.5" /> {lot.confidence}% confidence
+                  <Truck className="h-3.5 w-3.5" /> {lot.confidence}% {t("confidence")}
                 </Pill>
               </div>
 
@@ -109,10 +111,10 @@ function Crops() {
                   to="/decision"
                   className="rounded-full bg-primary px-4 py-2 text-sm text-primary-foreground"
                 >
-                  View decision
+                  {t("View decision")}
                 </Link>
                 <Link to="/buyers" className="rounded-full border border-border px-4 py-2 text-sm">
-                  Find buyers
+                  {t("Find buyers")}
                 </Link>
               </div>
             </Panel>

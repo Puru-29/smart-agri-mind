@@ -3,6 +3,8 @@ import { useState } from "react";
 import { ArrowRight, Building2, ShieldCheck, Sprout, Store, User } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LocationSelector } from "@/components/agri/location-selector";
+import { LanguageSelector } from "@/components/agri/language-selector";
+import { useI18n } from "@/lib/i18n";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -28,6 +30,7 @@ function AuthPage() {
   const [phone, setPhone] = useState("");
   const [pin, setPin] = useState("");
   const navigate = useNavigate();
+  const { t } = useI18n();
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-6 py-12">
@@ -39,10 +42,14 @@ function AuthPage() {
           <span className="font-serif text-xl">AgriSense</span>
         </Link>
 
+        <div className="mb-4 flex justify-center">
+          <LanguageSelector />
+        </div>
+
         <div className="rounded-[2rem] border border-border bg-card p-8">
-          <h1 className="font-serif text-3xl">Welcome back</h1>
+          <h1 className="font-serif text-3xl">{t("Welcome back")}</h1>
           <p className="mt-2 text-sm text-muted-foreground">
-            Choose your role and sign in with the phone number registered with your mandi.
+            {t("Choose your role and sign in with the phone number registered with your mandi.")}
           </p>
 
           <div className="mt-6 grid grid-cols-2 gap-3">
@@ -58,8 +65,8 @@ function AuthPage() {
                 )}
               >
                 <r.icon className="h-4 w-4 text-primary" />
-                <p className="mt-2 text-sm font-medium">{r.label}</p>
-                <p className="text-xs text-muted-foreground">{r.sub}</p>
+                <p className="mt-2 text-sm font-medium">{t(r.label)}</p>
+                <p className="text-xs text-muted-foreground">{t(r.sub)}</p>
               </button>
             ))}
           </div>
@@ -73,7 +80,7 @@ function AuthPage() {
           >
             <div>
               <label className="text-sm text-muted-foreground" htmlFor="phone">
-                Phone number
+                {t("Phone number")}
               </label>
               <input
                 id="phone"
@@ -86,7 +93,7 @@ function AuthPage() {
             </div>
             <div>
               <label className="text-sm text-muted-foreground" htmlFor="pin">
-                4-digit PIN
+                {t("4-digit PIN")}
               </label>
               <input
                 id="pin"
@@ -100,14 +107,14 @@ function AuthPage() {
               />
             </div>
             <div className="flex items-center justify-between gap-3">
-              <span className="text-sm text-muted-foreground">Farm location</span>
+              <span className="text-sm text-muted-foreground">{t("Farm location")}</span>
               <LocationSelector compact />
             </div>
             <button
               type="submit"
               className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-primary px-6 py-3 text-sm font-medium text-primary-foreground"
             >
-              Sign in <ArrowRight className="h-4 w-4" />
+              {t("Sign in")} <ArrowRight className="h-4 w-4" />
             </button>
           </form>
 
@@ -115,7 +122,7 @@ function AuthPage() {
             onClick={() => navigate({ to: "/dashboard" })}
             className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border px-6 py-3 text-sm"
           >
-            <User className="h-4 w-4" /> Continue as demo farmer (Ramesh)
+            <User className="h-4 w-4" /> {t("Continue as demo farmer (Ramesh)")}
           </button>
         </div>
       </div>
