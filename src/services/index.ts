@@ -32,6 +32,32 @@ import type { AppNotification, FarmerProfile } from "./types";
 
 export * from "./types";
 
+/**
+ * Static collections and helpers, re-exported so UI code has a single import
+ * surface. Replace the bodies in this folder to move onto a real backend.
+ */
+export {
+  BUYERS,
+  DEFAULT_LOCATION,
+  DRIVERS,
+  FORECAST,
+  LOCATIONS,
+  LOTS,
+  MARKETS,
+  NOTIFICATIONS,
+  ORDERS,
+  ORDER_TIMELINE,
+  PAYMENTS,
+  SIGNALS,
+  TRACKING_EVENTS,
+  buildComparison,
+  haversine,
+  inr,
+  kg,
+  roadKm,
+  transportPerKg,
+} from "@/lib/agri";
+
 /** Simulated network latency for the mock adapter. */
 const delay = <T,>(value: T, ms = 120): Promise<T> =>
   new Promise((resolve) => setTimeout(() => resolve(value), ms));
