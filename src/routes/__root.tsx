@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { LocationProvider } from "@/lib/location-context";
+import { I18nProvider } from "@/lib/i18n";
 import { NotificationProvider } from "@/lib/notification-context";
 import { Toaster } from "@/components/ui/sonner";
 
