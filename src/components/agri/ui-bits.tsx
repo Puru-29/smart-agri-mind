@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { useI18n } from "@/lib/i18n";
 import type { LotStatus } from "@/services";
 import type { ReactNode } from "react";
 
