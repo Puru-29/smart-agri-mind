@@ -41,6 +41,7 @@ export function PortalLayout({ children }: { children: ReactNode }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const [open, setOpen] = useState(false);
   const { location } = useFarmLocation();
+  const { unread } = useNotifications();
 
   return (
     <div className="min-h-screen bg-background">
