@@ -4,6 +4,7 @@ import {
   Bell,
   Boxes,
   Brain,
+  Building2,
   ChevronLeft,
   LayoutDashboard,
   LineChart,
@@ -12,12 +13,14 @@ import {
   Sprout,
   Store,
   Truck,
+  User,
   Users,
   Wallet,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { LocationSelector } from "./location-selector";
 import { useFarmLocation } from "@/lib/location-context";
+import { useNotifications } from "@/lib/notification-context";
 
 const NAV = [
   { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
@@ -29,6 +32,9 @@ const NAV = [
   { to: "/orders", label: "Orders", icon: Package },
   { to: "/logistics", label: "Logistics", icon: Truck },
   { to: "/payments", label: "Settlements", icon: Wallet },
+  { to: "/fpo", label: "FPO", icon: Building2 },
+  { to: "/notifications", label: "Notifications", icon: Bell },
+  { to: "/profile", label: "Profile", icon: User },
 ] as const;
 
 export function PortalLayout({ children }: { children: ReactNode }) {

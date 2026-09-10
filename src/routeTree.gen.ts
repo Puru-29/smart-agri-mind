@@ -16,6 +16,7 @@ import { Route as CropsRouteImport } from './routes/crops'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as DecisionRouteImport } from './routes/decision'
 import { Route as ForecastRouteImport } from './routes/forecast'
+import { Route as FpoRouteImport } from './routes/fpo'
 import { Route as LogisticsRouteImport } from './routes/logistics'
 import { Route as MarketsRouteImport } from './routes/markets'
 import { Route as NotificationsRouteImport } from './routes/notifications'
@@ -58,6 +59,11 @@ const ForecastRoute = ForecastRouteImport.update({
   path: '/forecast',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FpoRoute = FpoRouteImport.update({
+  id: '/fpo',
+  path: '/fpo',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LogisticsRoute = LogisticsRouteImport.update({
   id: '/logistics',
   path: '/logistics',
@@ -97,6 +103,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/decision': typeof DecisionRoute
   '/forecast': typeof ForecastRoute
+  '/fpo': typeof FpoRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
   '/notifications': typeof NotificationsRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/decision': typeof DecisionRoute
   '/forecast': typeof ForecastRoute
+  '/fpo': typeof FpoRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
   '/notifications': typeof NotificationsRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/decision': typeof DecisionRoute
   '/forecast': typeof ForecastRoute
+  '/fpo': typeof FpoRoute
   '/logistics': typeof LogisticsRoute
   '/markets': typeof MarketsRoute
   '/notifications': typeof NotificationsRoute
@@ -145,6 +154,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/decision'
     | '/forecast'
+    | '/fpo'
     | '/logistics'
     | '/markets'
     | '/notifications'
@@ -160,6 +170,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/decision'
     | '/forecast'
+    | '/fpo'
     | '/logistics'
     | '/markets'
     | '/notifications'
@@ -175,6 +186,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/decision'
     | '/forecast'
+    | '/fpo'
     | '/logistics'
     | '/markets'
     | '/notifications'
@@ -191,6 +203,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   DecisionRoute: typeof DecisionRoute
   ForecastRoute: typeof ForecastRoute
+  FpoRoute: typeof FpoRoute
   LogisticsRoute: typeof LogisticsRoute
   MarketsRoute: typeof MarketsRoute
   NotificationsRoute: typeof NotificationsRoute
@@ -250,6 +263,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForecastRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/fpo': {
+      id: '/fpo'
+      path: '/fpo'
+      fullPath: '/fpo'
+      preLoaderRoute: typeof FpoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/logistics': {
       id: '/logistics'
       path: '/logistics'
@@ -303,6 +323,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   DecisionRoute: DecisionRoute,
   ForecastRoute: ForecastRoute,
+  FpoRoute: FpoRoute,
   LogisticsRoute: LogisticsRoute,
   MarketsRoute: MarketsRoute,
   NotificationsRoute: NotificationsRoute,
