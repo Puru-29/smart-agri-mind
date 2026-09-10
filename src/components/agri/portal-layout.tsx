@@ -124,9 +124,10 @@ export function PortalLayout({ children }: { children: ReactNode }) {
             <Menu className="h-5 w-5" />
           </button>
           <p className="hidden text-sm text-muted-foreground md:block">
-            Farmer portal · Ramesh Patil
+            {t("Farmer portal")} · Ramesh Patil
           </p>
           <div className="ml-auto flex items-center gap-3">
+            <LanguageSelector className="hidden sm:flex" />
             <LocationSelector />
             <Link
               to="/notifications"
