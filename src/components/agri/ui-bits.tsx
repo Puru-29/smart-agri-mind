@@ -39,10 +39,11 @@ export function Pill({
 }
 
 export function StatusTag({ status }: { status: LotStatus }) {
+  const { t } = useI18n();
   const tone = status === "SELL NOW" ? "solid" : status === "HOLD" ? "amber" : "slate";
   return (
     <Pill tone={tone} className="font-semibold tracking-wide">
-      {status}
+      {t(status)}
     </Pill>
   );
 }
