@@ -64,6 +64,8 @@ function Landing() {
         </div>
       </header>
 
+      <PriceTicker />
+
       {/* Hero */}
       <section className="mx-auto grid max-w-6xl items-center gap-12 px-6 py-12 lg:grid-cols-2 lg:py-20">
         <div>
