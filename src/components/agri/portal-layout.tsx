@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
   Bell,
+  Bot,
   Boxes,
   Brain,
   Building2,
