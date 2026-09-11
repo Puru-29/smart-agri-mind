@@ -201,3 +201,55 @@ export function aggregateLots(
 }
 
 export type { AppNotification };
+
+/* -------------------------------------------- cold chain & virtual assistant */
+
+import {
+  BOT_ANSWERS,
+  BOT_FALLBACK,
+  BOT_GREETING,
+  COLD_CHAIN_FACILITIES,
+} from "./mock-data";
+
+export { BOT_ANSWERS, BOT_FALLBACK, BOT_GREETING, COLD_CHAIN_FACILITIES };
+
+export const getFacilities = () => COLD_CHAIN_FACILITIES;
+export const fetchFacilities = () => delay(COLD_CHAIN_FACILITIES);
+export const getBotAnswers = () => BOT_ANSWERS;
+export const fetchBotAnswers = () => delay(BOT_ANSWERS);
+
+/** Very small keyword matcher standing in for a future NLU backend. */
+export function askAgriBot(question: string, lang: "en" | "hi" | "mr") {
+  const q = question.toLowerCase();
+  const has = (...keys: string[]) => keys.some((k) => q.includes(k));
+  const pick = (id: string) => BOT_ANSWERS.find((a) => a.id === id)?.answer[lang];
+
+  if (has("onion", "कांदा", "कांद्या", "प्याज")) return pick("onion-rate")!;
+  if (has("soy", "सोयाबीन")) return pick("soybean-timing")!;
+  if (has("tomato", "टोमॅटो", "टमाटर", "pune", "पुणे")) return pick("pune-tomato")!;
+  if (has("grad", "ग्रेड", "quality", "गुणवत्ता")) return pick("ai-grading")!;
+  return BOT_FALLBACK[lang];
+}
+
+/** Freight + storage estimate for the cold chain calculator. */
+export function estimateFreight(input: {
+  km: number;
+  quintals: number;
+  ratePerKm: number;
+  storageDays?: number;
+  storagePerQuintalPerDay?: number;
+}) {
+  const trips = Math.max(1, Math.ceil(input.quintals / 180));
+  const freight = Math.round(input.km * input.ratePerKm * trips);
+  const storage = Math.round(
+    (input.storageDays ?? 0) * (input.storagePerQuintalPerDay ?? 0) * input.quintals,
+  );
+  const kgTotal = input.quintals * 100;
+  return {
+    trips,
+    freight,
+    storage,
+    total: freight + storage,
+    perKg: kgTotal > 0 ? Math.round(((freight + storage) / kgTotal) * 100) / 100 : 0,
+  };
+}
