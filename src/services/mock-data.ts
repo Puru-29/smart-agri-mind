@@ -235,3 +235,119 @@ export const TRUST_METRICS = [
   { label: "On-time payments", value: "98%", hint: "Last 12 months" },
   { label: "Data encrypted", value: "AES-256", hint: "At rest and in transit" },
 ];
+
+export const COLD_CHAIN_FACILITIES: ColdChainFacility[] = [
+  {
+    id: "mkcc",
+    name: "Maharashtra Kisan Cold Chain Logistics",
+    kind: "Reefer transport",
+    place: "Pimpalgaon Baswant",
+    district: "Nashik",
+    contact: "Sachin Kadam",
+    phone: "+91 98220 19911",
+    rating: 4.9,
+    verified: true,
+    tempRange: "-25°C to +15°C (GPS & temperature logged)",
+    capacity: "9 reefer trucks · 6–18 t",
+    ratePerKm: 48,
+    wdra: false,
+  },
+  {
+    id: "sahyadri-warehouse",
+    name: "Sahyadri Mega Agro Warehouse & Cold Storage",
+    kind: "Warehouse & cold storage",
+    place: "Mohadi, Dindori",
+    district: "Nashik",
+    contact: "Dr. Pravin Gore",
+    phone: "+91 98230 78822",
+    rating: 4.95,
+    verified: true,
+    tempRange: "+2°C to +8°C multi-chamber",
+    capacity: "12,000 t · WDRA accredited",
+    storagePerQuintalPerDay: 3.2,
+    ratePerKm: 42,
+    wdra: true,
+  },
+  {
+    id: "lasalgaon-silo",
+    name: "Lasalgaon Onion Dry Storage Silos",
+    kind: "Dry storage silo",
+    place: "Lasalgaon",
+    district: "Nashik",
+    contact: "Vaishali Pawar",
+    phone: "+91 90280 44510",
+    rating: 4.7,
+    verified: true,
+    tempRange: "Ambient · forced ventilation",
+    capacity: "4,500 t onion chawls",
+    storagePerQuintalPerDay: 1.4,
+    ratePerKm: 36,
+    wdra: true,
+  },
+  {
+    id: "godavari-reefer",
+    name: "Godavari Reefer & Packhouse Network",
+    kind: "Reefer transport",
+    place: "Ozar",
+    district: "Nashik",
+    contact: "Imran Shaikh",
+    phone: "+91 97640 21188",
+    rating: 4.6,
+    verified: true,
+    tempRange: "-18°C to +12°C",
+    capacity: "Shared load · 3 t minimum",
+    ratePerKm: 39,
+    wdra: false,
+  },
+];
+
+export const BOT_ANSWERS: BotAnswer[] = [
+  {
+    id: "onion-rate",
+    chip: "कांद्याचा आजचा भाव?",
+    answer: {
+      en: "Lasalgaon APMC onion is trading at ₹18/kg today (arrivals 310 t, up 1.4% this week). Nashik APMC is ₹17.4/kg. From Dindori the freight is about ₹2.6/kg, so your net is close to ₹15.4/kg. Grade B stock is holding better than Grade C this week.",
+      hi: "आज लासलगांव APMC में प्याज ₹18/किलो चल रहा है (आवक 310 टन, इस हफ्ते +1.4%)। नाशिक APMC ₹17.4/किलो है। दिंडोरी से भाड़ा लगभग ₹2.6/किलो, यानी शुद्ध ₹15.4/किलो। इस हफ्ते ग्रेड B, ग्रेड C से बेहतर टिक रहा है।",
+      mr: "आज लासलगाव APMC मध्ये कांदा ₹18/किलो आहे (आवक 310 टन, या आठवड्यात +1.4%). नाशिक APMC ₹17.4/किलो. दिंडोरीहून वाहतूक अंदाजे ₹2.6/किलो, म्हणजे निव्वळ ₹15.4/किलो. या आठवड्यात ग्रेड B, ग्रेड C पेक्षा चांगला टिकतो आहे.",
+    },
+  },
+  {
+    id: "soybean-timing",
+    chip: "सोयाबीन कधी विकावे?",
+    answer: {
+      en: "Hold your Latur soybean lot 7–10 more days. Processor demand around Latur is firm and the four-week outlook points to ₹47–48/kg against today's ₹46/kg. Dry storage loss is under 0.5% a week, so waiting costs little. Sell immediately if moisture crosses 12%.",
+      hi: "लातूर का सोयाबीन 7–10 दिन और रोकें। लातूर के आसपास प्रोसेसर मांग मजबूत है और चार-सप्ताह का अनुमान ₹47–48/किलो है, आज ₹46/किलो के मुकाबले। सूखे भंडारण में नुकसान हफ्ते में 0.5% से कम है। नमी 12% से ऊपर जाए तो तुरंत बेचें।",
+      mr: "लातूरचा सोयाबीन आणखी 7–10 दिवस थांबवा. लातूरजवळ प्रोसेसर मागणी मजबूत आहे आणि चार आठवड्यांचा अंदाज ₹47–48/किलो आहे, आजच्या ₹46/किलोच्या तुलनेत. कोरड्या साठवणुकीत आठवड्याला 0.5% पेक्षा कमी घट होते. ओलावा 12% च्या वर गेला तर लगेच विका.",
+    },
+  },
+  {
+    id: "pune-tomato",
+    chip: "Pune Tomato Rate?",
+    answer: {
+      en: "Pune Market Yard tomato is ₹31/kg with 530 t arrivals and high demand (+4.8% over seven days). From Dindori it is 210 km, so freight is about ₹5.5/kg and storage ₹0.5/kg — net ₹25/kg. Nashik APMC at ₹28/kg leaves you ₹26/kg net, which is the better call today.",
+      hi: "पुणे मार्केट यार्ड में टमाटर ₹31/किलो, आवक 530 टन, मांग ऊँची (सात दिन में +4.8%)। दिंडोरी से 210 किमी, भाड़ा ~₹5.5/किलो और भंडारण ₹0.5/किलो — शुद्ध ₹25/किलो। नाशिक APMC ₹28/किलो पर शुद्ध ₹26/किलो देता है, आज वही बेहतर है।",
+      mr: "पुणे मार्केट यार्डमध्ये टोमॅटो ₹31/किलो, आवक 530 टन, मागणी जास्त (सात दिवसांत +4.8%). दिंडोरीहून 210 किमी, वाहतूक ~₹5.5/किलो आणि साठवण ₹0.5/किलो — निव्वळ ₹25/किलो. नाशिक APMC ₹28/किलोवर निव्वळ ₹26/किलो देतो, आज तोच पर्याय चांगला.",
+    },
+  },
+  {
+    id: "ai-grading",
+    chip: "How does AI Grading work?",
+    answer: {
+      en: "You photograph a sample crate. AgriSense checks size spread, colour uniformity, blemishes and moisture cues, then maps the lot to Grade A, B or C using APMC grading norms. The grade decides which buyers you are matched with and the price band we use for net realization.",
+      hi: "आप एक नमूना क्रेट की फोटो लेते हैं। AgriSense आकार, रंग की एकरूपता, दाग और नमी के संकेत जाँचता है और APMC मानकों के अनुसार लॉट को ग्रेड A, B या C देता है। ग्रेड तय करता है कि कौन से खरीदार मिलेंगे और शुद्ध आय किस भाव पर आँकी जाएगी।",
+      mr: "तुम्ही नमुना क्रेटचा फोटो काढता. AgriSense आकार, रंगाची एकसारखेपणा, डाग आणि ओलाव्याचे संकेत तपासतो आणि APMC निकषांनुसार लॉटला ग्रेड A, B किंवा C देतो. ग्रेडवरून कोणते खरेदीदार जुळतील आणि निव्वळ उत्पन्न कोणत्या दराने मोजले जाईल हे ठरते.",
+    },
+  },
+];
+
+export const BOT_GREETING = {
+  en: "Hello! I am your AgriSense AI advisor. Ask me anything about Maharashtra mandi rates, selling windows, cold storage or escrow payments.",
+  hi: "नमस्ते! मैं आपका AgriSense डिजिटल सहायक हूँ। महाराष्ट्र के मंडी भाव, बिक्री का सही समय, कोल्ड स्टोरेज या भुगतान के बारे में पूछें।",
+  mr: "नमस्कार! मी तुमचा AgriSense डिजिटल सहाय्यक आहे. महाराष्ट्रातील बाजारभाव, विक्रीची योग्य वेळ, शीतगृह किंवा पेमेंटबाबत विचारू शकता.",
+};
+
+export const BOT_FALLBACK = {
+  en: "I do not have that exact figure in the demo dataset yet. Try asking about onion, tomato or soybean rates, the best time to sell a lot, cold storage costs, or how AI grading works.",
+  hi: "यह आँकड़ा डेमो डेटा में अभी नहीं है। प्याज, टमाटर या सोयाबीन के भाव, बेचने का सही समय, कोल्ड स्टोरेज खर्च या AI ग्रेडिंग के बारे में पूछें।",
+  mr: "हा नेमका आकडा डेमो डेटामध्ये अजून नाही. कांदा, टोमॅटो किंवा सोयाबीनचे दर, विक्रीची योग्य वेळ, शीतगृह खर्च किंवा AI ग्रेडिंगबाबत विचारा.",
+};
