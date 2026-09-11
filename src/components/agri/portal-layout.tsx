@@ -11,6 +11,7 @@ import {
   LineChart,
   Menu,
   Package,
+  Snowflake,
   Sprout,
   Store,
   Truck,
