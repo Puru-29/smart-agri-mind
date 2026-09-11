@@ -1,5 +1,7 @@
 import type {
   AppNotification,
+  BotAnswer,
+  ColdChainFacility,
   Faq,
   FarmerProfile,
   FpoPool,
