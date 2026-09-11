@@ -107,3 +107,28 @@ export type TickerQuote = {
 };
 
 export type Faq = { q: string; a: string };
+
+export type FacilityKind = "Reefer transport" | "Warehouse & cold storage" | "Dry storage silo";
+
+export type ColdChainFacility = {
+  id: string;
+  name: string;
+  kind: FacilityKind;
+  place: string;
+  district: string;
+  contact: string;
+  phone: string;
+  rating: number;
+  verified: boolean;
+  tempRange?: string;
+  capacity?: string;
+  ratePerKm?: number;
+  storagePerQuintalPerDay?: number;
+  wdra: boolean;
+};
+
+export type BotAnswer = {
+  id: string;
+  chip: string;
+  answer: { en: string; hi: string; mr: string };
+};

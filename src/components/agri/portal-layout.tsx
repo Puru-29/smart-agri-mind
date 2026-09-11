@@ -2,6 +2,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { useState, type ReactNode } from "react";
 import {
   Bell,
+  Bot,
   Boxes,
   Brain,
   Building2,
@@ -10,6 +11,7 @@ import {
   LineChart,
   Menu,
   Package,
+  Snowflake,
   Sprout,
   Store,
   Truck,
@@ -30,9 +32,11 @@ const NAV = [
   { to: "/markets", label: "Markets", icon: Store },
   { to: "/decision", label: "AI Decision", icon: Brain },
   { to: "/forecast", label: "Price Forecast", icon: LineChart },
+  { to: "/agribot", label: "AgriBot Assistant", icon: Bot },
   { to: "/buyers", label: "Buyers", icon: Users },
   { to: "/orders", label: "Orders", icon: Package },
   { to: "/logistics", label: "Logistics", icon: Truck },
+  { to: "/storage", label: "Cold Chain & Storage", icon: Snowflake },
   { to: "/payments", label: "Settlements", icon: Wallet },
   { to: "/fpo", label: "FPO", icon: Building2 },
   { to: "/notifications", label: "Notifications", icon: Bell },

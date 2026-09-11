@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgribotRouteImport } from './routes/agribot'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BuyersRouteImport } from './routes/buyers'
 import { Route as CropsRouteImport } from './routes/crops'
@@ -23,10 +24,16 @@ import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OrdersRouteImport } from './routes/orders'
 import { Route as PaymentsRouteImport } from './routes/payments'
 import { Route as ProfileRouteImport } from './routes/profile'
+import { Route as StorageRouteImport } from './routes/storage'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgribotRoute = AgribotRouteImport.update({
+  id: '/agribot',
+  path: '/agribot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -94,9 +101,15 @@ const ProfileRoute = ProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StorageRoute = StorageRouteImport.update({
+  id: '/storage',
+  path: '/storage',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agribot': typeof AgribotRoute
   '/auth': typeof AuthRoute
   '/buyers': typeof BuyersRoute
   '/crops': typeof CropsRoute
@@ -110,9 +123,11 @@ export interface FileRoutesByFullPath {
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
+  '/storage': typeof StorageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agribot': typeof AgribotRoute
   '/auth': typeof AuthRoute
   '/buyers': typeof BuyersRoute
   '/crops': typeof CropsRoute
@@ -126,10 +141,12 @@ export interface FileRoutesByTo {
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
+  '/storage': typeof StorageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agribot': typeof AgribotRoute
   '/auth': typeof AuthRoute
   '/buyers': typeof BuyersRoute
   '/crops': typeof CropsRoute
@@ -143,11 +160,13 @@ export interface FileRoutesById {
   '/orders': typeof OrdersRoute
   '/payments': typeof PaymentsRoute
   '/profile': typeof ProfileRoute
+  '/storage': typeof StorageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agribot'
     | '/auth'
     | '/buyers'
     | '/crops'
@@ -161,9 +180,11 @@ export interface FileRouteTypes {
     | '/orders'
     | '/payments'
     | '/profile'
+    | '/storage'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/agribot'
     | '/auth'
     | '/buyers'
     | '/crops'
@@ -177,9 +198,11 @@ export interface FileRouteTypes {
     | '/orders'
     | '/payments'
     | '/profile'
+    | '/storage'
   id:
     | '__root__'
     | '/'
+    | '/agribot'
     | '/auth'
     | '/buyers'
     | '/crops'
@@ -193,10 +216,12 @@ export interface FileRouteTypes {
     | '/orders'
     | '/payments'
     | '/profile'
+    | '/storage'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgribotRoute: typeof AgribotRoute
   AuthRoute: typeof AuthRoute
   BuyersRoute: typeof BuyersRoute
   CropsRoute: typeof CropsRoute
@@ -210,6 +235,7 @@ export interface RootRouteChildren {
   OrdersRoute: typeof OrdersRoute
   PaymentsRoute: typeof PaymentsRoute
   ProfileRoute: typeof ProfileRoute
+  StorageRoute: typeof StorageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -219,6 +245,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agribot': {
+      id: '/agribot'
+      path: '/agribot'
+      fullPath: '/agribot'
+      preLoaderRoute: typeof AgribotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -312,11 +345,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/storage': {
+      id: '/storage'
+      path: '/storage'
+      fullPath: '/storage'
+      preLoaderRoute: typeof StorageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgribotRoute: AgribotRoute,
   AuthRoute: AuthRoute,
   BuyersRoute: BuyersRoute,
   CropsRoute: CropsRoute,
@@ -330,6 +371,7 @@ const rootRouteChildren: RootRouteChildren = {
   OrdersRoute: OrdersRoute,
   PaymentsRoute: PaymentsRoute,
   ProfileRoute: ProfileRoute,
+  StorageRoute: StorageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
