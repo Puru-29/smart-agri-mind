@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AgribotRouteImport } from './routes/agribot'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as BuyersRouteImport } from './routes/buyers'
 import { Route as CropsRouteImport } from './routes/crops'
@@ -27,6 +28,11 @@ import { Route as ProfileRouteImport } from './routes/profile'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AgribotRoute = AgribotRouteImport.update({
+  id: '/agribot',
+  path: '/agribot',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -97,6 +103,7 @@ const ProfileRoute = ProfileRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/agribot': typeof AgribotRoute
   '/auth': typeof AuthRoute
   '/buyers': typeof BuyersRoute
   '/crops': typeof CropsRoute
@@ -113,6 +120,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/agribot': typeof AgribotRoute
   '/auth': typeof AuthRoute
   '/buyers': typeof BuyersRoute
   '/crops': typeof CropsRoute
@@ -130,6 +138,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/agribot': typeof AgribotRoute
   '/auth': typeof AuthRoute
   '/buyers': typeof BuyersRoute
   '/crops': typeof CropsRoute
@@ -148,6 +157,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/agribot'
     | '/auth'
     | '/buyers'
     | '/crops'
@@ -164,6 +174,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/agribot'
     | '/auth'
     | '/buyers'
     | '/crops'
@@ -180,6 +191,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/agribot'
     | '/auth'
     | '/buyers'
     | '/crops'
@@ -197,6 +209,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AgribotRoute: typeof AgribotRoute
   AuthRoute: typeof AuthRoute
   BuyersRoute: typeof BuyersRoute
   CropsRoute: typeof CropsRoute
@@ -219,6 +232,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/agribot': {
+      id: '/agribot'
+      path: '/agribot'
+      fullPath: '/agribot'
+      preLoaderRoute: typeof AgribotRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -317,6 +337,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AgribotRoute: AgribotRoute,
   AuthRoute: AuthRoute,
   BuyersRoute: BuyersRoute,
   CropsRoute: CropsRoute,
