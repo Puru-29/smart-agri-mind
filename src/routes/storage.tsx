@@ -95,7 +95,7 @@ function StoragePage() {
       <div className="grid gap-5 lg:grid-cols-[1.6fr_1fr]">
         <div className="space-y-5">
           {COLD_CHAIN_FACILITIES.map((f) => (
-            <Panel key={f.id} className={f.id === selected ? "border-primary" : undefined}>
+            <Panel key={f.id} className={f.id === selected ? "border-primary" : ""}>
               <div className="flex flex-wrap items-start justify-between gap-4">
                 <div>
                   <h2 className="font-serif text-2xl">{f.name}</h2>
